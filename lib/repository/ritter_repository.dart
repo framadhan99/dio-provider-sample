@@ -6,10 +6,11 @@ import 'package:dio_provider_sample/services/dio_error_handler.dart';
 
 class RitterRepository {
   final Dio _dio = Dio();
+  // final int id;
 
   Future<ResponseTopicModel?> getAllUser() async {
     const String baseUrl =
-        "https://htapp.rittercoding.com/api/getCategoryTopic";
+        "https://htapp.rittercoding.com/api/getCategoryTopic/";
     // final uri = Uri.parse(baseUrl);
 
     try {
@@ -36,5 +37,12 @@ class RitterRepository {
     } catch (e) {
       throw CustomError(errMsg: e.toString());
     }
+  }
+
+  void delUser(int id) async {
+    final response = await _dio
+        .post("https://htapp.rittercoding.com/api/getCategoryTopic/", data: {
+      "id": id,
+    });
   }
 }
